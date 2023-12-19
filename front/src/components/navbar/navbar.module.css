@@ -1,0 +1,17 @@
+.navbar__container {
+  height: var(--header-size);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 0 16px;
+}
+
+.navbar__list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar__list li {
+  margin: 8px;
+}

@@ -1,0 +1,58 @@
+.userCard__container {
+  flex: 0 1 400px;
+  height: 200px;
+  border: solid 3px #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.userCard__container:hover .userCard__overlayGradient {
+  width: 100%;
+}
+
+.userCard__overlayGradient {
+  width: 35%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 0.6s ease-in-out;
+}
+
+.userCard__leftSide {
+  flex: 0 1 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userCard__imageContainer {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: solid 3px #ddd;
+  overflow: hidden;
+}
+
+.userCard__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userCard__contentContainer {
+  padding: 16px;
+}
+
+.userCard__role {
+  font-size: 11px;
+  padding: 0 4px;
+  border: solid 2px rgba(163, 203, 56, 1);
+  border-radius: 16px;
+  background-color: rgba(163, 203, 56, 0.7);
+}
