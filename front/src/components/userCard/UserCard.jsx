@@ -49,11 +49,11 @@ export const UserCard = ({ user }) => {
       </div>
 
       <div className={styles.userCard__contentContainer}>
-        <h2>
+        <p className={styles.userCard__cardTitle}>
           {user.firstname} {user.lastname}
-        </h2>
-        <p>{user.email}</p>
-        <p>{user.age} ans</p>
+        </p>
+        <p className={styles.userCard__commonText}>{user.email}</p>
+        <p className={styles.userCard__commonText}>{user.age} ans</p>
       </div>
     </div>
   );
