@@ -6,7 +6,7 @@ import * as dotenv from "dotenv";
 import cors from "@fastify/cors";
 import { authenticate } from "./authenticate.js";
 import { login, register, logout, getCurrentUser } from "./controllers/auth.js";
-import { getUsers } from "./controllers/users.js";
+import { deleteUserById, editUserById, getUsers } from "./controllers/users.js";
 dotenv.config();
 
 export const fastify = Fastify({
@@ -42,6 +42,12 @@ fastify.get("/me", getCurrentUser);
 
 // Users
 fastify.get("/users", { preHandler: authenticate }, getUsers);
+fastify.delete(
+  "/user/delete/:id",
+  { preHandler: authenticate },
+  deleteUserById
+);
+fastify.put("/user/edit/:id", { preHandler: authenticate }, editUserById);
 
 fastify.listen({ port: 4000 }, (err) => {
   if (err) {

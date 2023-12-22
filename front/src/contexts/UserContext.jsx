@@ -31,8 +31,60 @@ const Provider = ({ children }) => {
     }
   }
 
+  async function deleteUserById(id) {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/user/delete/${id}`,
+        {
+          credentials: "include",
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("DELETE DATA: ", response);
+        setUsers((oldUsers) => [...oldUsers.filter((user) => user.id !== id)]);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
+  async function editUserById(id, newUser) {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/user/edit/${id}`,
+        {
+          credentials: "include",
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname: newUser.firstname,
+            lastname: newUser.lastname,
+            image_link: newUser.image_link || null,
+            age: newUser.age || null,
+            role: newUser.role,
+          }),
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("EDIT USER: ", response);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ users }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ users, deleteUserById, editUserById }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
