@@ -1,5 +1,6 @@
 .userCard__container {
-  flex: 1 1 600px;
+  flex: 1 1 500px;
+  max-width: 600px;
   height: 300px;
   /* border: solid 3px var(--dark-color); */
   border-radius: 8px;
@@ -7,7 +8,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  box-shadow: 1px 1px 2px #000;
+  box-shadow: 1px 1px 4px #000;
   transition: all 0.6s ease-out;
 }
 
@@ -21,7 +22,7 @@
 
 .userCard__container:hover {
   /* transform: scale(1.008); */
-  box-shadow: 1px 1px 4px #000;
+  box-shadow: 1px 1px 8px #000;
 }
 
 /* .userCard__container:hover .userCard__ctaContainer {
@@ -95,9 +96,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  display: flex;
   z-index: 2;
 }
 
@@ -143,6 +145,7 @@
 @media screen and (max-width: 840px) {
   .userCard__container {
     height: 200px;
+    /* flex: 1 1 400px; */
   }
 
   .userCard__imageContainer {

@@ -74,7 +74,10 @@ const Provider = ({ children }) => {
       );
 
       if (response.status === 200) {
-        console.log("EDIT USER: ", response);
+        const updatedUsers = users.map((user) =>
+          user.id === newUser.id ? newUser : user
+        );
+        setUsers(updatedUsers);
       }
     } catch (error) {
       console.log("error: ", error);

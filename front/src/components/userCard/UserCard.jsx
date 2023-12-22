@@ -1,9 +1,10 @@
 import { useContext, useMemo } from "react";
 import styles from "./user-card.module.css";
 import UserContext from "../../contexts/UserContext";
+import { toast } from "react-toastify";
 
 export const UserCard = ({ user, handleOpenModal, setSelectedUser }) => {
-  const { deleteUserById, editUserById } = useContext(UserContext);
+  const { deleteUserById } = useContext(UserContext);
 
   const createRandomGradient = () => {
     let orientation = "45deg";
@@ -37,7 +38,10 @@ export const UserCard = ({ user, handleOpenModal, setSelectedUser }) => {
 
   const handleDeleteUser = (e) => {
     console.log("user deleted", user);
-    deleteUserById(user.id);
+    if (user && user.id) {
+      deleteUserById(user.id);
+      toast.success("Utilisateur supprimé !");
+    }
   };
 
   const handleEditUser = (e) => {

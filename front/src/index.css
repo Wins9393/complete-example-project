@@ -16,6 +16,11 @@
 
   --dark-color: rgb(33, 48, 64, 1);
   --dark-color-low-opacity: rgb(33, 48, 64, 0.4);
+
+  --dark-color-secondary: #2f3542;
+  --light-color: #d1d8e0
+
+  --accent-color: #6d214f;
 }
 
 a {
@@ -30,8 +35,8 @@ a:hover {
 input {
   border: none;
   border-radius: 8px;
-  margin: 4px;
-  padding: 4px 8px;
+  margin: 4px 0;
+  padding: 8px;
 }
 
 * {
@@ -45,11 +50,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -58,18 +58,19 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: var(--light-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent-color);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -80,4 +81,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

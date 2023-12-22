@@ -8,18 +8,24 @@
 
 .usersPage__editUserModalContainer {
   width: 50%;
-  height: 500px;
-  background-color: aqua;
-  padding: 12px;
+  height: 600px;
+  background-color: var(--dark-color-secondary);
+  border-radius: 8px;
+  padding: 32px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
+  box-shadow: 2px 2px 8px #000;
 }
 
 .usersPage__editUserModalContent {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -29,6 +35,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.usersPage__editUserModalFormItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.usersPage__editUserModalFormContainer > input {
+  width: 100%;
 }
 
 .usersPage__editUserModalCTAContainer {
@@ -40,7 +59,7 @@
 @media screen and (max-width: 840px) {
   .usersPage__mainContainer {
     width: 100%;
-    gap: 8px;
+    gap: 16px;
     padding: 16px;
   }
 }

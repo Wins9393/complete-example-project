@@ -16,7 +16,11 @@ export const MainContainer = ({ children }) => {
     location.pathname != "/login" &&
     location.pathname != "/register"
   ) {
-    return <h2>Vous n'êtes pas authentifié !</h2>;
+    return (
+      <div className={styles.mainContainer}>
+        <h2 style={{ color: "#fff" }}>Vous n'êtes pas authentifié !</h2>
+      </div>
+    );
   }
   return <div className={styles.mainContainer}>{children}</div>;
 };
