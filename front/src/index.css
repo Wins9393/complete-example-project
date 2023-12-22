@@ -13,6 +13,9 @@
 
   --header-size: 10vh;
   --main-content-size: 90vh;
+
+  --dark-color: rgb(33, 48, 64, 1);
+  --dark-color-low-opacity: rgb(33, 48, 64, 0.4);
 }
 
 a {

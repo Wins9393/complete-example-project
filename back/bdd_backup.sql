@@ -21,7 +21,8 @@ DROP DATABASE IF EXISTS project_test;
 -- Name: project_test; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE project_test WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'French_France.1252';
+CREATE DATABASE project_test WITH TEMPLATE = template0 ENCODING = 'UTF8';
+--  LOCALE_PROVIDER = libc LOCALE = 'French_France.1252';
 
 
 ALTER DATABASE project_test OWNER TO postgres;

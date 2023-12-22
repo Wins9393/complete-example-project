@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 16px;
+  gap: 32px;
   padding: 32px;
+  background-color: #2f3542;
   /* min-height: var(--main-content-size); */
 }
