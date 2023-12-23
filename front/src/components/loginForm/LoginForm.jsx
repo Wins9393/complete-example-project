@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
   const navigate = useNavigate();
 
   const { login } = useContext(AuthContext);
@@ -18,32 +19,46 @@ export const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    login(email, password, () => navigate("/"));
+
+    if (!email || !password) {
+      return setErrors("Tous les champs sont requis !");
+    }
+
+    const response = await login(email, password, () => navigate("/users"));
+    console.log(response);
+
+    if (!response.success) {
+      setErrors(response.message);
+    }
   };
 
   return (
     <div className={styles.loginForm__container}>
-      <form>
-        <div className={styles.formItem}>
-          <label>Email</label>
-          <input
-            type="text"
-            onChange={handleChangeEmail}
-            placeholder="Enter your email"
-          />
+      <form className={styles.loginForm__formContainer}>
+        <div className={styles.loginForm__formInputs}>
+          <div className={styles.loginForm__formItem}>
+            <label>Email</label>
+            <input
+              type="text"
+              onChange={handleChangeEmail}
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className={styles.loginForm__formItem}>
+            <label>Password</label>
+            <input
+              type="text"
+              onChange={handleChangePassword}
+              placeholder="Enter your password"
+            />
+          </div>
         </div>
-        <div className={styles.formItem}>
-          <label>Password</label>
-          <input
-            type="text"
-            onChange={handleChangePassword}
-            placeholder="Enter your password"
-          />
-        </div>
-        <div className={styles.formItem}>
-          <button onClick={handleLogin}>Login</button>
+        {errors && <p className="form_error">{errors}</p>}
+
+        <div className={styles.loginForm__ctaSection}>
+          <button onClick={handleLogin}>Se connecter</button>
         </div>
       </form>
     </div>

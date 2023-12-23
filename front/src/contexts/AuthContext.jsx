@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext({});
 
@@ -44,15 +45,22 @@ const Provider = ({ children }) => {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      if (response.status === 404) {
+        return { success: false, message: "Email ou mot de passe incorrect !" };
+      }
 
-      setUser(data.user);
-      setIsConnected(data.authenticated);
-      if (onSuccess && response.ok) {
+      if (onSuccess && response.status === 200) {
+        const data = await response.json();
+
+        setUser(data.user);
+        setIsConnected(data.authenticated);
         onSuccess();
+        toast.success("Connexion réussie !");
+        return { success: true };
       }
     } catch (error) {
       console.log("ERREUR: ", error);
+      return { success: false, message: "Erreur de connexion." };
     }
   };
 
@@ -65,6 +73,7 @@ const Provider = ({ children }) => {
 
       if (response.ok) {
         console.log("Déconnexion réussie !");
+        toast.success("Déconnexion réussie !");
         setIsConnected(false);
       }
     } catch (error) {
@@ -100,12 +109,15 @@ const Provider = ({ children }) => {
         }),
       });
 
-      const data = await response.json();
+      if (response.status === 200) {
+        const data = await response.json();
 
-      setUser(data.user);
-      setIsConnected(data.authenticated);
-      if (onSuccess && response.ok) {
-        onSuccess();
+        setUser(data.user);
+        setIsConnected(data.authenticated);
+        toast.success("Inscription réussie !");
+        if (onSuccess) {
+          onSuccess();
+        }
       }
     } catch (error) {
       console.log("ERREUR: ", error);

@@ -109,84 +109,90 @@ export const RegisterForm = () => {
       userInfos.password,
       userInfos.age,
       userInfos.role,
-      () => navigate("/")
+      () => navigate("/users")
     );
   };
 
   return (
     <div className={styles.registerForm__container}>
-      <form>
-        <div className={styles.formItem}>
-          <label>Firstname</label>
-          <input
-            required
-            onChange={handleFirstname}
-            type="text"
-            placeholder="Enter your firstname"
-          />
-          {errors.firstname && (
-            <p className={styles.error}>{errors.firstname}</p>
-          )}
+      <form className={styles.registerForm__formContainer}>
+        <div className={styles.registerForm__formInputs}>
+          <div className={styles.registerForm__formItem}>
+            <label>Firstname</label>
+            <input
+              required
+              onChange={handleFirstname}
+              type="text"
+              placeholder="Enter your firstname"
+            />
+            {errors.firstname && (
+              <p className="form_error">{errors.firstname}</p>
+            )}
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Lastname</label>
+            <input
+              required
+              onChange={handleLastname}
+              type="text"
+              placeholder="Enter your lastname"
+            />
+            {errors.lastname && <p className="form_error">{errors.lastname}</p>}
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Image (link)</label>
+            <input
+              onChange={handleImage}
+              type="text"
+              placeholder="Enter an image link"
+            />
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Age</label>
+            <input
+              onChange={handleAge}
+              type="number"
+              pattern="\d*"
+              placeholder="Enter your age"
+            />
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Role</label>
+            <select required onChange={handleRole}>
+              <option value="admin">Admin</option>
+              <option value="employee">Employee</option>
+              <option value="developper">Developper</option>
+              <option value="teacher">Teacher</option>
+              <option value="designer">Designer</option>
+              <option value="student">Student</option>
+              <option value="tester">Tester</option>
+            </select>
+            {errors.role && <p className="form_error">{errors.role}</p>}
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Email</label>
+            <input
+              required
+              onChange={handleEmail}
+              type="email"
+              placeholder="Enter your email"
+            />
+            {errors.email && <p className="form_error">{errors.email}</p>}
+          </div>
+          <div className={styles.registerForm__formItem}>
+            <label>Password</label>
+            <input
+              required
+              onChange={handlePassword}
+              type="text"
+              placeholder="Enter your password"
+            />
+            {errors.password && <p className="form_error">{errors.password}</p>}
+          </div>
         </div>
+
         <div className={styles.formItem}>
-          <label>Lastname</label>
-          <input
-            required
-            onChange={handleLastname}
-            type="text"
-            placeholder="Enter your lastname"
-          />
-          {errors.lastname && <p className={styles.error}>{errors.lastname}</p>}
-        </div>
-        <div className={styles.formItem}>
-          <label>Image (link)</label>
-          <input
-            onChange={handleImage}
-            type="text"
-            placeholder="Enter an image link"
-          />
-        </div>
-        <div className={styles.formItem}>
-          <label>Age</label>
-          <input
-            onChange={handleAge}
-            type="number"
-            pattern="\d*"
-            placeholder="Enter your age"
-          />
-        </div>
-        <div className={styles.formItem}>
-          <label>Role</label>
-          <input
-            required
-            onChange={handleRole}
-            type="text"
-            placeholder="Enter your role"
-          />
-          {errors.role && <p className={styles.error}>{errors.role}</p>}
-        </div>
-        <div className={styles.formItem}>
-          <label>Email</label>
-          <input
-            required
-            onChange={handleEmail}
-            type="email"
-            placeholder="Enter your email"
-          />
-          {errors.email && <p className={styles.error}>{errors.email}</p>}
-        </div>
-        <div className={styles.formItem}>
-          <label>Password</label>
-          <input
-            required
-            onChange={handlePassword}
-            type="text"
-            placeholder="Enter your password"
-          />
-          {errors.password && <p className={styles.error}>{errors.password}</p>}
-        </div>
-        <div className={styles.formItem}>
-          <button onClick={handleRegister}>Login</button>
+          <button onClick={handleRegister}>S'inscrire</button>
         </div>
       </form>
     </div>

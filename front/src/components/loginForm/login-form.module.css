@@ -1,4 +1,32 @@
 .loginForm__container {
   width: 100%;
   height: var(--main-content-size);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
+}
+
+.loginForm__formContainer {
+  width: 600px;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 8px;
+  background-color: var(--dark-color);
+  box-shadow: 2px 2px 8px #000;
+}
+
+.loginForm__formInputs {
+  width: 60%;
+}
+
+.loginForm__formItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
 }

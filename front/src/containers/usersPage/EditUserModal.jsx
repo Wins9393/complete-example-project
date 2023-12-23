@@ -94,12 +94,25 @@ export const EditUserModal = ({ isOpen, handleOpenModal, selectedUser }) => {
 
           <div className={styles.usersPage__editUserModalFormItem}>
             <label>Rôle</label>
-            <input
+            {/* <input
               type="text"
               placeholder="Role"
               value={newUser.role || ""}
               onChange={handleRoleChange}
-            />
+            /> */}
+            <select
+              required
+              onChange={handleRoleChange}
+              value={newUser.role || ""}
+            >
+              <option value="admin">Admin</option>
+              <option value="employee">Employee</option>
+              <option value="developper">Developper</option>
+              <option value="teacher">Teacher</option>
+              <option value="designer">Designer</option>
+              <option value="student">Student</option>
+              <option value="Tester">Tester</option>
+            </select>
           </div>
         </div>
         <div className={styles.usersPage__editUserModalCTAContainer}>
