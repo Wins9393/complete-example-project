@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./navbar.module.css";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
@@ -12,22 +12,51 @@ export const Navbar = () => {
         <>
           <ul className={styles.navbar__list}>
             <li>
-              <Link onClick={logout}>Logout</Link>
+              <NavLink onClick={logout} className={styles.navbar__link}>
+                Logout
+              </NavLink>
             </li>
           </ul>
           <ul className={styles.navbar__list}>
             <li>
-              <Link to={"/users"}>Users</Link>
+              <NavLink
+                to={"/users"}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.active} ${styles.navbar__link}`
+                    : styles.navbar__link
+                }
+              >
+                Users
+              </NavLink>
             </li>
           </ul>
         </>
       ) : (
         <ul className={styles.navbar__list}>
           <li>
-            <Link to={"/login"}>Login</Link>
+            <NavLink
+              to={"/login"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.active} ${styles.navbar__link}`
+                  : styles.navbar__link
+              }
+            >
+              Login
+            </NavLink>
           </li>
           <li>
-            <Link to={"/register"}>Register</Link>
+            <NavLink
+              to={"/register"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.active} ${styles.navbar__link}`
+                  : styles.navbar__link
+              }
+            >
+              Register
+            </NavLink>
           </li>
         </ul>
       )}

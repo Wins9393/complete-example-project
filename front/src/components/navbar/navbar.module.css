@@ -4,6 +4,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 16px 0 16px;
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(262deg 99% 24%) 17%,
+    hsl(272deg 97% 27%) 29%,
+    hsl(279deg 94% 31%) 40%,
+    hsl(286deg 91% 35%) 52%,
+    hsl(292deg 88% 39%) 63%,
+    hsl(297deg 86% 42%) 75%,
+    hsl(302deg 84% 48%) 87%,
+    hsl(307deg 100% 55%) 100%
+  );
 }
 
 .navbar__list {
@@ -14,4 +26,16 @@
 
 .navbar__list li {
   margin: 8px;
+}
+
+.navbar__link {
+  color: #fff;
+}
+
+.navbar__link:hover {
+  color: #ffdd59;
+}
+
+.active {
+  font-weight: bold;
 }

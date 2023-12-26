@@ -21,10 +21,10 @@ export const UsersPage = () => {
     <>
       <div className={styles.usersPage__mainContainer}>
         {users?.length > 0
-          ? users.map((user) => (
+          ? users.map((userRecord) => (
               <UserCard
-                key={user.email}
-                user={user}
+                key={userRecord.email}
+                userRecord={userRecord}
                 setSelectedUser={setSelectedUser}
                 handleOpenModal={handleOpenModal}
               />

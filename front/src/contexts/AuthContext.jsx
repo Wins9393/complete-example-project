@@ -9,6 +9,7 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     getConnectedUser();
+    console.log("current user: ", user);
   }, [isConnected]);
 
   const getConnectedUser = async () => {

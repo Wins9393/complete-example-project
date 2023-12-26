@@ -18,9 +18,9 @@
   --dark-color-low-opacity: rgb(33, 48, 64, 0.4);
 
   --dark-color-secondary: #2f3542;
-  --light-color: #d1d8e0
+  --light-color: #d1d8e0;
 
-  --accent-color: #6d214f;
+  --accent-color: #8854d0;
   --error-color: #d63031;
 }
 
@@ -33,7 +33,8 @@ a:hover {
   color: #535bf2;
 }
 
-input, select {
+input,
+select {
   border: none;
   border-radius: 8px;
   margin: 4px 0;
@@ -71,7 +72,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.form_error{
+.form_error {
   color: var(--error-color);
   font-size: 0.8rem;
   margin: 4px 0 0 0;
