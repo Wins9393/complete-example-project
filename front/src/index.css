@@ -24,13 +24,25 @@
   --error-color: #d63031;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  /* color: #535bf2; */
+  color: var(--accent-color);
 }
 
 input,
@@ -41,15 +53,12 @@ select {
   padding: 8px;
 }
 
-* {
-  box-sizing: border-box;
+input:focus {
+  border: solid 1px var(--accent-color);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
+input:focus-visible {
+  border: solid 1px var(--accent-color);
 }
 
 button {

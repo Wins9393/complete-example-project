@@ -1,7 +1,7 @@
 .userCard__container {
-  flex: 1 1 500px;
-  max-width: 600px;
-  height: 300px;
+  flex: 1 1 400px;
+  /* max-width: 600px; */
+  height: 200px;
   /* border: solid 3px var(--dark-color); */
   border-radius: 8px;
   overflow: hidden;
@@ -142,15 +142,10 @@
   text-align: center;
 }
 
-@media screen and (max-width: 840px) {
-  .userCard__container {
-    height: 200px;
-    /* flex: 1 1 400px; */
-  }
-
+@media screen and (max-width: 480px) {
   .userCard__imageContainer {
-    width: 48px;
-    height: 48px;
+    width: 72px;
+    height: 72px;
   }
 
   .userCard__cardTitle {
@@ -159,5 +154,10 @@
 
   .userCard__commonText {
     font-size: 1rem;
+  }
+
+  .userCard__cta {
+    width: 24px;
+    height: 24px;
   }
 }

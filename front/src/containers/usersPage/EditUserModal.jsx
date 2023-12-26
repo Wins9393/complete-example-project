@@ -52,67 +52,69 @@ export const EditUserModal = ({ isOpen, handleOpenModal, selectedUser }) => {
     >
       <div className={styles.usersPage__editUserModalContent}>
         <div className={styles.usersPage__editUserModalFormContainer}>
-          <div className={styles.usersPage__editUserModalFormItem}>
-            <label style={{ color: "var(--light-color)" }}>Firstname</label>
-            <input
-              type="text"
-              placeholder="Firstname"
-              value={newUser.firstname || ""}
-              onChange={handleFirstnameChange}
-            />
-          </div>
+          <div className={styles.usersPage__editUserModalFormInputs}>
+            <div className={styles.usersPage__editUserModalFormItem}>
+              <label style={{ color: "var(--light-color)" }}>Firstname</label>
+              <input
+                type="text"
+                placeholder="Firstname"
+                value={newUser.firstname || ""}
+                onChange={handleFirstnameChange}
+              />
+            </div>
 
-          <div className={styles.usersPage__editUserModalFormItem}>
-            <label>Lastname</label>
-            <input
-              type="text"
-              placeholder="Lastname"
-              value={newUser.lastname || ""}
-              onChange={handleLastnameChange}
-            />
-          </div>
+            <div className={styles.usersPage__editUserModalFormItem}>
+              <label>Lastname</label>
+              <input
+                type="text"
+                placeholder="Lastname"
+                value={newUser.lastname || ""}
+                onChange={handleLastnameChange}
+              />
+            </div>
 
-          <div className={styles.usersPage__editUserModalFormItem}>
-            <label>Age</label>
-            <input
-              type="number"
-              placeholder="Age"
-              value={newUser.age || ""}
-              onChange={handleAgeChange}
-            />
-          </div>
+            <div className={styles.usersPage__editUserModalFormItem}>
+              <label>Age</label>
+              <input
+                type="number"
+                placeholder="Age"
+                value={newUser.age || ""}
+                onChange={handleAgeChange}
+              />
+            </div>
 
-          <div className={styles.usersPage__editUserModalFormItem}>
-            <label>Image link</label>
-            <input
-              type="text"
-              placeholder="Image link"
-              value={newUser.image_link || ""}
-              onChange={handleImageChange}
-            />
-          </div>
+            <div className={styles.usersPage__editUserModalFormItem}>
+              <label>Image link</label>
+              <input
+                type="text"
+                placeholder="Image link"
+                value={newUser.image_link || ""}
+                onChange={handleImageChange}
+              />
+            </div>
 
-          <div className={styles.usersPage__editUserModalFormItem}>
-            <label>Rôle</label>
-            {/* <input
+            <div className={styles.usersPage__editUserModalFormItem}>
+              <label>Rôle</label>
+              {/* <input
               type="text"
               placeholder="Role"
               value={newUser.role || ""}
               onChange={handleRoleChange}
             /> */}
-            <select
-              required
-              onChange={handleRoleChange}
-              value={newUser.role || ""}
-            >
-              <option value="admin">Admin</option>
-              <option value="employee">Employee</option>
-              <option value="developper">Developper</option>
-              <option value="teacher">Teacher</option>
-              <option value="designer">Designer</option>
-              <option value="student">Student</option>
-              <option value="Tester">Tester</option>
-            </select>
+              <select
+                required
+                onChange={handleRoleChange}
+                value={newUser.role || ""}
+              >
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+                <option value="developper">Developper</option>
+                <option value="teacher">Teacher</option>
+                <option value="designer">Designer</option>
+                <option value="student">Student</option>
+                <option value="Tester">Tester</option>
+              </select>
+            </div>
           </div>
         </div>
         <div className={styles.usersPage__editUserModalCTAContainer}>
