@@ -3,6 +3,7 @@ import UserContext from "../../contexts/UserContext";
 import styles from "./users.module.css";
 import { UserCard } from "../../components/userCard/UserCard";
 import { EditUserModal } from "./EditUserModal";
+import { ActionBar } from "../../components/action-bar/ActionBar";
 
 export const UsersPage = () => {
   const { users } = useContext(UserContext);
@@ -19,6 +20,7 @@ export const UsersPage = () => {
 
   return (
     <>
+      <ActionBar />
       <div className={styles.usersPage__mainContainer}>
         {users?.length > 0
           ? users.map((userRecord) => (

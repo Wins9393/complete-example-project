@@ -1,0 +1,20 @@
+/* Test nesting css*/
+.actionBar__container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  background-color: var(--dark-color);
+  box-shadow: 1px 1px 4px #000;
+
+  & .actionBar__icon {
+    cursor: pointer;
+    & #gradientIcon {
+      transition: opacity 0.4s ease-out;
+    }
+
+    &:hover #gradientIcon {
+      opacity: 1;
+    }
+  }
+}

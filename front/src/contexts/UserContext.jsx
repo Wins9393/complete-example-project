@@ -84,8 +84,48 @@ const Provider = ({ children }) => {
     }
   }
 
+  async function createUser(
+    firstname,
+    lastname,
+    image_link,
+    email,
+    password,
+    age,
+    role
+  ) {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/user/create`,
+        {
+          credentials: "include",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname,
+            lastname,
+            image_link,
+            email,
+            password,
+            age,
+            role,
+          }),
+        }
+      );
+
+      if (response.status === 201) {
+        toast.success("Création réussie !");
+      }
+    } catch (error) {
+      console.log("ERREUR: ", error);
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ users, deleteUserById, editUserById }}>
+    <UserContext.Provider
+      value={{ users, deleteUserById, editUserById, createUser }}
+    >
       {children}
     </UserContext.Provider>
   );

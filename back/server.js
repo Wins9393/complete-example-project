@@ -6,7 +6,12 @@ import * as dotenv from "dotenv";
 import cors from "@fastify/cors";
 import { authenticate } from "./authenticate.js";
 import { login, register, logout, getCurrentUser } from "./controllers/auth.js";
-import { deleteUserById, editUserById, getUsers } from "./controllers/users.js";
+import {
+  createUser,
+  deleteUserById,
+  editUserById,
+  getUsers,
+} from "./controllers/users.js";
 dotenv.config();
 
 export const fastify = Fastify({
@@ -48,6 +53,7 @@ fastify.delete(
   deleteUserById
 );
 fastify.put("/user/edit/:id", { preHandler: authenticate }, editUserById);
+fastify.post("/user/create", { preHandler: authenticate }, createUser);
 
 fastify.listen({ port: 4000 }, (err) => {
   if (err) {

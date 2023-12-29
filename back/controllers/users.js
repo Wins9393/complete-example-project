@@ -46,3 +46,40 @@ export async function editUserById(req, res) {
     });
   }
 }
+
+export async function createUser(req, res) {
+  try {
+    const { firstname, lastname, image_link, email, password, age, role } =
+      req.body;
+
+    const hash_password = await argon2.hash(password);
+
+    const query =
+      "INSERT INTO public.user(firstname, lastname, image_link, email, password, age, role) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+
+    const values = [
+      firstname,
+      lastname,
+      image_link,
+      email,
+      hash_password,
+      age,
+      role,
+    ];
+
+    const result = await fastify.pg.query(query, values);
+
+    if (result.rowCount === parseInt(1)) {
+      res.code(201).send("Utilisateur créé avec succès !");
+    } else {
+      res
+        .code(500)
+        .send("Une erreur est survenue lors de la création de l'utilisateur");
+    }
+  } catch (error) {
+    res.code(500).send({
+      error: "Erreur lors de l'enregistrement de l'utilisateur",
+      details: error.toString(),
+    });
+  }
+}
