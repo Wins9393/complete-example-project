@@ -30,6 +30,18 @@ export const Navbar = () => {
                 Users
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/account"}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.active} ${styles.navbar__link}`
+                    : styles.navbar__link
+                }
+              >
+                My Account
+              </NavLink>
+            </li>
           </ul>
         </>
       ) : (

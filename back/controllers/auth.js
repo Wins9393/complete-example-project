@@ -5,7 +5,7 @@ export async function login(req, res) {
   try {
     const { email, password } = req.body;
     const query =
-      "SELECT firstname, lastname, image_link, email, password, age, role FROM public.user WHERE email=$1";
+      "SELECT id, firstname, lastname, image_link, email, password, age, role FROM public.user WHERE email=$1";
     const values = [email];
 
     const response = await fastify.pg.query(query, values);
@@ -18,8 +18,10 @@ export async function login(req, res) {
     if (await argon2.verify(response.rows[0].password, password)) {
       req.session.authenticated = true;
       req.session.user = {
+        id: response.rows[0].id,
         firstname: response.rows[0].firstname,
         lastname: response.rows[0].lastname,
+        image_link: response.rows[0].image_link,
         email: response.rows[0].email,
         age: response.rows[0].age,
         role: response.rows[0].role,
@@ -61,6 +63,7 @@ export async function register(req, res) {
       req.session.user = {
         firstname,
         lastname,
+        image_link,
         email,
         age,
         role,

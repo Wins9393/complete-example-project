@@ -3,9 +3,10 @@ import { fastify } from "../server.js";
 
 export async function getUsers(req, res) {
   try {
+    const currentUserId = req.session.user.id;
     const query =
-      "SELECT id, firstname, lastname, image_link, email, age, role FROM public.user";
-    const response = await fastify.pg.query(query);
+      "SELECT firstname, lastname, image_link, email, age, role FROM public.user WHERE id != $1";
+    const response = await fastify.pg.query(query, [currentUserId]);
     res.code(200).send(response.rows);
   } catch (error) {
     res.code(500).send({

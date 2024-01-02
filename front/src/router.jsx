@@ -4,6 +4,7 @@ import { ErrorPage } from "./containers/errorPage/ErrorPage.jsx";
 import { LoginPage } from "./containers/loginPage/LoginPage.jsx";
 import { RegisterPage } from "./containers/registerPage/RegisterPage.jsx";
 import { UsersPage } from "./containers/usersPage/UsersPage.jsx";
+import { AccountPage } from "./containers/accountPage/AccountPage.jsx";
 
 export const Router = () => {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ export const Router = () => {
         {
           path: "/register",
           element: <RegisterPage />,
+        },
+        {
+          path: "/account",
+          element: <AccountPage />,
         },
         {
           path: "/users",
