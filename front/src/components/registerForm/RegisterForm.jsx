@@ -184,7 +184,7 @@ export const RegisterForm = () => {
             <input
               required
               onChange={handlePassword}
-              type="text"
+              type="password"
               placeholder="Enter your password"
             />
             {errors.password && <p className="form_error">{errors.password}</p>}

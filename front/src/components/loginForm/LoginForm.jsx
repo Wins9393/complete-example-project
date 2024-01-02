@@ -49,7 +49,7 @@ export const LoginForm = () => {
           <div className={styles.loginForm__formItem}>
             <label>Password</label>
             <input
-              type="text"
+              type="password"
               onChange={handleChangePassword}
               placeholder="Enter your password"
             />

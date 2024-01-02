@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import { fastify } from "../server.js";
 
 export async function getUsers(req, res) {
@@ -31,7 +32,7 @@ export async function deleteUserById(req, res) {
 
 export async function editUserById(req, res) {
   const { id } = req.params;
-  const { firstname, lastname, image_link, email, age, role } = req.body;
+  const { firstname, lastname, image_link, age, role } = req.body;
 
   try {
     const query =
@@ -55,7 +56,7 @@ export async function createUser(req, res) {
     const hash_password = await argon2.hash(password);
 
     const query =
-      "INSERT INTO public.user(firstname, lastname, image_link, email, password, age, role) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+      "INSERT INTO public.user(firstname, lastname, image_link, email, password, age, role) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, firstname, lastname, image_link, email, age, role";
 
     const values = [
       firstname,
@@ -70,7 +71,7 @@ export async function createUser(req, res) {
     const result = await fastify.pg.query(query, values);
 
     if (result.rowCount === parseInt(1)) {
-      res.code(201).send("Utilisateur créé avec succès !");
+      res.code(201).send(result.rows);
     } else {
       res
         .code(500)

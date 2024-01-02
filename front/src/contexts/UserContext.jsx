@@ -114,8 +114,11 @@ const Provider = ({ children }) => {
         }
       );
 
+      const data = await response.json();
+
       if (response.status === 201) {
-        toast.success("Création réussie !");
+        console.log("data create user: ", data);
+        setUsers((oldUsers) => [...oldUsers, ...data]);
       }
     } catch (error) {
       console.log("ERREUR: ", error);

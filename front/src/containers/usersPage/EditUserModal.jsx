@@ -116,10 +116,10 @@ export const EditUserModal = ({ isOpen, handleOpenModal, selectedUser }) => {
               </select>
             </div>
           </div>
-        </div>
-        <div className={styles.usersPage__editUserModalCTAContainer}>
-          <button onClick={handleConfirmButton}>Modifier</button>
-          <button onClick={handleOpenModal}>Fermer</button>
+          <div className={styles.usersPage__editUserModalButtonContainer}>
+            <button onClick={handleConfirmButton}>Modifier</button>
+            <button onClick={handleOpenModal}>Fermer</button>
+          </div>
         </div>
       </div>
     </div>

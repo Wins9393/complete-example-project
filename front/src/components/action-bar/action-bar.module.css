@@ -6,6 +6,9 @@
   padding: 8px 16px;
   background-color: var(--dark-color);
   box-shadow: 1px 1px 4px #000;
+  position: sticky;
+  top: var(--header-size);
+  z-index: 3;
 
   & .actionBar__icon {
     cursor: pointer;

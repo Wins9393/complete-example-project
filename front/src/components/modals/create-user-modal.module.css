@@ -1,14 +1,5 @@
-.usersPage__mainContainer {
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  gap: 32px;
-  padding: 32px;
-}
-
-.usersPage__editUserModalContainer {
+.createUserModal__container {
   width: 600px;
-  /* height: 600px; */
   background-color: var(--dark-color-secondary);
   border-radius: 8px;
   padding: 32px;
@@ -20,8 +11,7 @@
   box-shadow: 2px 2px 8px #000;
 }
 
-.usersPage__editUserModalContent {
-  /* position: relative; */
+.createUserModal__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +20,7 @@
   height: 100%;
 }
 
-.usersPage__editUserModalFormContainer {
+.createUserModal__formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,25 +29,25 @@
   height: 100%;
 }
 
-.usersPage__editUserModalFormInputs {
+.createUserModal__formInputs {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
 
-.usersPage__editUserModalFormItem {
+.createUserModal__formItem {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 8px;
 }
 
-.usersPage__editUserModalFormContainer > input {
+.createUserModal__formContainer > input {
   width: 100%;
 }
 
-.usersPage__editUserModalButtonContainer {
+.createUserModal__buttonContainer {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -65,32 +55,19 @@
   gap: 16px;
 }
 
-@media screen and (max-width: 1120px) {
-  .usersPage__mainContainer {
-    width: 100%;
-    gap: 16px;
-    padding: 32px;
-  }
-}
-
 @media screen and (max-width: 840px) {
-  .usersPage__editUserModalContainer {
+  .createUserModal__container {
     width: 60%;
     padding: 32px;
   }
 
-  .usersPage__editUserModalFormContainer {
+  .createUserModal__formContainer {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .usersPage__mainContainer {
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .usersPage__editUserModalContainer {
+  .createUserModal__container {
     width: 80%;
     padding: 32px 16px;
   }
