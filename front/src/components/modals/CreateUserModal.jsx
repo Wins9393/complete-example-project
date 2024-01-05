@@ -4,7 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import { toast } from "react-toastify";
 
 export const CreateUserModal = ({ isOpenCreate, handleOpenModal }) => {
-  const [userInfos, setUserInfos] = useState({});
+  const [userInfos, setUserInfos] = useState({ role: "employee" });
   const [errors, setErrors] = useState({});
   const { createUser } = useContext(UserContext);
 
@@ -164,7 +164,7 @@ export const CreateUserModal = ({ isOpenCreate, handleOpenModal }) => {
             </div>
             <div className={styles.createUserModal__formItem}>
               <label>Role</label>
-              <select required onChange={handleRole}>
+              <select required defaultValue="employee" onChange={handleRole}>
                 <option value="admin">Admin</option>
                 <option value="employee">Employee</option>
                 <option value="developper">Developper</option>

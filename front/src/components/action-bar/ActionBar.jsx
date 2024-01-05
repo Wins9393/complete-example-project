@@ -5,7 +5,10 @@ import styles from "./action-bar.module.css";
 export const ActionBar = () => {
   const [isOpenCreate, setIsOpenCreate] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
     setIsOpenCreate((oldIsOpen) => !oldIsOpen);
   };
 

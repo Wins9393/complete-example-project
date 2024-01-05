@@ -47,18 +47,16 @@ a:hover {
 
 input,
 select {
-  border: none;
+  border: solid 1px transparent;
   border-radius: 8px;
   margin: 4px 0;
   padding: 8px;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border: solid 1px var(--accent-color);
-}
-
-input:focus-visible {
-  border: solid 1px var(--accent-color);
+  outline: none;
 }
 
 button {

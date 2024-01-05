@@ -4,9 +4,11 @@ import styles from "./users.module.css";
 import { UserCard } from "../../components/userCard/UserCard";
 import { EditUserModal } from "./EditUserModal";
 import { ActionBar } from "../../components/action-bar/ActionBar";
+import AuthContext from "../../contexts/AuthContext";
 
 export const UsersPage = () => {
   const { users } = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState({});
 
@@ -20,7 +22,7 @@ export const UsersPage = () => {
 
   return (
     <>
-      <ActionBar />
+      {user.role === "admin" ? <ActionBar /> : ""}
       <div className={styles.usersPage__mainContainer}>
         {users?.length > 0
           ? users.map((userRecord) => (

@@ -5,7 +5,7 @@ export async function getUsers(req, res) {
   try {
     const currentUserId = req.session.user.id;
     const query =
-      "SELECT firstname, lastname, image_link, email, age, role FROM public.user WHERE id != $1";
+      "SELECT id, firstname, lastname, image_link, email, age, role FROM public.user WHERE id != $1";
     const response = await fastify.pg.query(query, [currentUserId]);
     res.code(200).send(response.rows);
   } catch (error) {

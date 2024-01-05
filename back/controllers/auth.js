@@ -9,7 +9,6 @@ export async function login(req, res) {
     const values = [email];
 
     const response = await fastify.pg.query(query, values);
-    console.log("RESPONSE: ", response);
 
     if (response.rowCount === 0) {
       return res.code(404).send("Email ou mot de passe incorrect !");
@@ -103,5 +102,35 @@ export async function getCurrentUser(req, res) {
     res.code(200).send(req.session);
   } else {
     res.code(401).send({ message: "Non authentifié" });
+  }
+}
+
+export async function editConnectedUser(req, res) {
+  const { id } = req.params;
+  const { firstname, lastname, image_link, age, role } = req.body;
+
+  if (parseInt(id) === parseInt(req.session.user.id)) {
+    try {
+      const query =
+        "UPDATE public.user SET firstname=$1, lastname=$2, image_link=$3, age=$4, role=$5 WHERE id=$6";
+      const values = [firstname, lastname, image_link, age, role, id];
+      const response = await fastify.pg.query(query, values);
+      req.session.user = {
+        id: req.session.user.id,
+        firstname: firstname,
+        lastname: lastname,
+        image_link: image_link,
+        email: req.session.user.email,
+        age: age,
+        role: role,
+      };
+
+      res.code(200).send(req.session);
+    } catch (error) {
+      res.code(500).send({
+        error: "Erreur lors de la modification de l'utilisateur connecté",
+        details: error.toString(),
+      });
+    }
   }
 }

@@ -54,6 +54,7 @@ const Provider = ({ children }) => {
   }
 
   async function editUserById(id, newUser) {
+    console.log(id, newUser);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/user/edit/${id}`,
@@ -127,7 +128,12 @@ const Provider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ users, deleteUserById, editUserById, createUser }}
+      value={{
+        users,
+        deleteUserById,
+        editUserById,
+        createUser,
+      }}
     >
       {children}
     </UserContext.Provider>

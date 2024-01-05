@@ -5,7 +5,13 @@ import fastifySession from "@fastify/session";
 import * as dotenv from "dotenv";
 import cors from "@fastify/cors";
 import { authenticate } from "./authenticate.js";
-import { login, register, logout, getCurrentUser } from "./controllers/auth.js";
+import {
+  login,
+  register,
+  logout,
+  getCurrentUser,
+  editConnectedUser,
+} from "./controllers/auth.js";
 import {
   createUser,
   deleteUserById,
@@ -44,6 +50,7 @@ fastify.post("/login", login);
 fastify.post("/register", register);
 fastify.post("/logout", logout);
 fastify.get("/me", getCurrentUser);
+fastify.put("/me/edit/:id", { preHandler: authenticate }, editConnectedUser);
 
 // Users
 fastify.get("/users", { preHandler: authenticate }, getUsers);

@@ -35,6 +35,36 @@ const Provider = ({ children }) => {
     }
   };
 
+  async function editConnectedUser(id, newUser) {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/me/edit/${id}`,
+        {
+          credentials: "include",
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname: newUser.firstname,
+            lastname: newUser.lastname,
+            image_link: newUser.image_link || null,
+            age: newUser.age || null,
+            role: newUser.role,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setUser(data.user);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
   const login = async (email, password, onSuccess) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
@@ -127,7 +157,7 @@ const Provider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isConnected, login, logout, register }}
+      value={{ user, isConnected, login, logout, register, editConnectedUser }}
     >
       {children}
     </AuthContext.Provider>
